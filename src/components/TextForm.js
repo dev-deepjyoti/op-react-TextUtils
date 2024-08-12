@@ -15,6 +15,16 @@ export default function TextForm(props) {
     setText(newText);
   };
 
+  const handleCopytoClipboard = () => {
+    const newText = text;
+    navigator.clipboard.writeText(newText);
+  };
+
+  const handleExtraSpace = () => {
+    const newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   const handleClearText = () => {
     setText("");
   };
@@ -35,11 +45,33 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-sm btn-primary mx-2" onClick={handleUpClick}>
+        <button
+          className="btn btn-sm btn-primary mx-2"
+          onClick={handleUpClick}
+          disabled={text === ""}
+        >
           Convert to Uppercase
         </button>
-        <button className="btn btn-sm btn-primary mx-2" onClick={handleLoClick}>
+        <button
+          className="btn btn-sm btn-primary mx-2"
+          onClick={handleLoClick}
+          disabled={text === ""}
+        >
           Convert to Lowercase
+        </button>
+        <button
+          className="btn btn-sm btn-primary mx-2"
+          onClick={handleCopytoClipboard}
+          disabled={text === ""}
+        >
+          Copy Text
+        </button>
+        <button
+          className="btn btn-sm btn-primary mx-2"
+          onClick={handleExtraSpace}
+          disabled={text === ""}
+        >
+          Remove Extra Spaces
         </button>
         <button
           className="btn btn-sm btn-primary mx-2"
@@ -56,7 +88,7 @@ export default function TextForm(props) {
           &nbsp;words&nbsp;and&nbsp;
           {text.length} characters
         </label>
-        <h4 class="my-2">Preview</h4>
+        <h4 className="my-2">Preview</h4>
         <p>{text}</p>
       </div>
     </>
