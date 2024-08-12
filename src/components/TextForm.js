@@ -34,7 +34,10 @@ export default function TextForm(props) {
   };
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "light" ? "black" : "white" }}
+      >
         <h2>{props.heading}</h2>
         <div className="mb-3">
           <textarea
@@ -43,6 +46,10 @@ export default function TextForm(props) {
             onChange={handleOnChange}
             id="mybox"
             rows="8"
+            style={{
+              background: props.mode === "light" ? "white" : "grey",
+              color: props.mode === "light" ? "black" : "white",
+            }}
           ></textarea>
         </div>
         <button
@@ -81,7 +88,10 @@ export default function TextForm(props) {
           Clear
         </button>
       </div>
-      <div className="container">
+      <div
+        className="container"
+        style={{ color: props.mode === "light" ? "black" : "white" }}
+      >
         <h3 className="my-3">Text Summary</h3>
         <label>
           {text === "" ? text.split(" ").length - 1 : text.split(" ").length}{" "}
@@ -89,7 +99,9 @@ export default function TextForm(props) {
           {text.length} characters
         </label>
         <h4 className="my-2">Preview</h4>
-        <p>{text}</p>
+        <p>
+          {text.length > 0 ? text : "Enter something above to preview it here."}
+        </p>
       </div>
     </>
   );
