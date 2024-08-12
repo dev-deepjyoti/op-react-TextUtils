@@ -100,7 +100,7 @@ export default function TextForm(props) {
       >
         <h3 className="my-3">Text Summary</h3>
         <label>
-          {text === "" ? text.split(" ").length - 1 : text.split(" ").length}{" "}
+          {text === "" ? text.split(" ").length - 1 : text.split(" ").length}
           &nbsp;words&nbsp;and&nbsp;
           {text.length} characters
         </label>
