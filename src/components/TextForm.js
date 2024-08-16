@@ -20,7 +20,7 @@ export default function TextForm(props) {
   const handleCopytoClipboard = () => {
     const newText = text;
     navigator.clipboard.writeText(newText);
-    props.showAlert("Copied to clipboard!", "Success");
+    props.showAlert("Copied to clipboard!", "Info");
   };
 
   const handleExtraSpace = () => {
@@ -44,7 +44,7 @@ export default function TextForm(props) {
         className="container"
         style={{ color: props.mode === "light" ? "black" : "white" }}
       >
-        <h2>{props.heading}</h2>
+        <h2 className="my-3">{props.heading}</h2>
         <div className="mb-3">
           <textarea
             className="form-control"
@@ -53,41 +53,41 @@ export default function TextForm(props) {
             id="mybox"
             rows="8"
             style={{
-              background: props.mode === "light" ? "white" : "grey",
+              background: props.mode === "light" ? "white" : "#222e38",
               color: props.mode === "light" ? "black" : "white",
             }}
           ></textarea>
         </div>
         <button
-          className="btn btn-sm btn-primary mx-2"
+          className="btn btn-sm btn-primary mx-2 my-2"
           onClick={handleUpClick}
           disabled={text === ""}
         >
           Convert to Uppercase
         </button>
         <button
-          className="btn btn-sm btn-primary mx-2"
+          className="btn btn-sm btn-primary mx-2 my-2"
           onClick={handleLoClick}
           disabled={text === ""}
         >
           Convert to Lowercase
         </button>
         <button
-          className="btn btn-sm btn-primary mx-2"
+          className="btn btn-sm btn-primary mx-2 my-2"
           onClick={handleCopytoClipboard}
           disabled={text === ""}
         >
           Copy Text
         </button>
         <button
-          className="btn btn-sm btn-primary mx-2"
+          className="btn btn-sm btn-primary mx-2 my-2"
           onClick={handleExtraSpace}
           disabled={text === ""}
         >
           Remove Extra Spaces
         </button>
         <button
-          className="btn btn-sm btn-primary mx-2"
+          className="btn btn-sm btn-primary mx-2 my-2"
           onClick={handleClearText}
           disabled={text === ""}
         >
@@ -98,16 +98,24 @@ export default function TextForm(props) {
         className="container"
         style={{ color: props.mode === "light" ? "black" : "white" }}
       >
-        <h3 className="my-3">Text Summary</h3>
-        <label>
-          {text === "" ? text.split(" ").length - 1 : text.split(" ").length}
-          &nbsp;words&nbsp;and&nbsp;
-          {text.length} characters
-        </label>
-        <h4 className="my-2">Preview</h4>
+        <h3 className="my-3">Your Text Summary</h3>
         <p>
-          {text.length > 0 ? text : "Enter something above to preview it here."}
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }
+          &nbsp;words&nbsp;and&nbsp;
+          {text.length} characters |&nbsp;
+          {0.008 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes read
         </p>
+        <p></p>
+        <h4 className="my-2">Preview</h4>
+        <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
       </div>
     </>
   );
