@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
+  // $("li .nav-link").click(function () {
+  //   $("li .nav-link").removeClass("active");
+  //   $(this).addClass("active");
+  // });
+
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}

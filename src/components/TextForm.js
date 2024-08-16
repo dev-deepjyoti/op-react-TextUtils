@@ -101,14 +101,14 @@ export default function TextForm(props) {
         <h3 className="my-3">Your Text Summary</h3>
         <p>
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }
           &nbsp;words&nbsp;and&nbsp;
           {text.length} characters |&nbsp;
           {0.008 *
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length}{" "}
           Minutes read
