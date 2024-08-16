@@ -26,8 +26,20 @@ function App() {
     }, 2000);
   };
 
+  const setBodyColor = (cls) => {
+    // document.body.classList.remove(document.querySelector("body").className);
+
+    document.body.classList.remove("bg-light");
+    document.body.classList.remove("bg-suceess");
+    document.body.classList.remove("bg-warning");
+    document.body.classList.remove("bg-danger");
+    document.body.classList.add("bg-" + cls);
+  };
+
   // Dark mode toggle switch
-  const toggleMode = () => {
+  const toggleMode = (cls) => {
+    // console.log(cls);
+    setBodyColor(cls);
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#042743";
@@ -46,7 +58,7 @@ function App() {
         <Alert alert={alert} />
         <div className="container">
           <Routes>
-            <Route path="/" exact="true">
+            <Route path="/" exact>
               <TextForm
                 heading="Try TextUtils - Word Counter, Character Counter, Remove extra Spaces"
                 mode={mode}
